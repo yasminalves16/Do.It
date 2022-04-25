@@ -38,6 +38,7 @@ export const InputContainer = styled.div`
     }
 
     input{
+        width: 100%;
         background: transparent;
         align-items: center;
         flex: 1;
@@ -45,6 +46,10 @@ export const InputContainer = styled.div`
         color: var(--black);
         &::placeholder{
             color: var(--gray)
+        }
+
+        @media (max-width: 800px){
+            width: 20vw;
         }
     }
 
