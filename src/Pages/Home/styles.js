@@ -17,7 +17,7 @@ export const Content = styled.div`
         color: white;
 
         span{
-            color: gray;
+            color: var(--grey);
         }
     }
 

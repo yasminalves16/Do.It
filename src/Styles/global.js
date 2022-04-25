@@ -13,12 +13,12 @@ export default createGlobalStyle `
         --pink: #FF2253;
         --black: #0c0d0d;
         --orange: #c85311;
+        --gray: #666360
     }
     
     body{
         background: var(--pink);
         color: var(--black);
-
     }
 
     body, input, button {

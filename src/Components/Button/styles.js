@@ -12,7 +12,7 @@ export const Container = styled.button`
     margin-top: 16px;
     transition: 1s;
         :hover {
-            border: 2px solid gray;
+            border: 2px solid grey;
         }
     width: 100%;
 
