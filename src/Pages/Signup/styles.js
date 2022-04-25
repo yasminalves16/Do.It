@@ -57,6 +57,10 @@ export const AnimationContainer = styled.div`
         color: white;
     }
 
+    >div{
+        margin-top: 16px;
+    }
+
     p{
         margin-top: 8px;
         color: white;
