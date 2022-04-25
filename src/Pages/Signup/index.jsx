@@ -6,13 +6,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 
 import { AnimationContainer, Background, Container, Content } from "./styles";
-
 import { FiUser, FiMail, FiLock } from "react-icons/fi"
+import { toast } from "react-toastify"
 
 import api from"../../services/api"
 
 import Button from "../../Components/Button"
 import Input from "../../Components/Input"
+
 
 
 const Signup = () => {
@@ -39,8 +40,11 @@ const Signup = () => {
 
         const user = {name, email, password}
         api.post("/user/register", user)
-        .then((response) => console.log(response.data))
-        .catch((err) => console.log(err))
+        .then(() => {
+            toast.success('Conta criada com sucesso')
+            return history.push("/login")
+        })
+        .catch(() => toast.error('Verifique se os campos foram inseridos corretamente ou tente outro email'))
     }
 
     return(
