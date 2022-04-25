@@ -7,10 +7,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { AnimationContainer, Background, Container, Content } from "./styles";
 
+import { FiUser, FiMail, FiLock } from "react-icons/fi"
+
+import api from"../../services/api"
+
 import Button from "../../Components/Button"
 import Input from "../../Components/Input"
 
-import { FiUser, FiMail, FiLock } from "react-icons/fi"
 
 const Signup = () => {
 
@@ -20,11 +23,8 @@ const Signup = () => {
 
         name: yup.string().required("Campo Obrigatório"),
         email: yup.string().required("Campo Obrigatório").email("Email inválido"),
-        password: yup.string().required("Campo Obrigatório").min(6, "Minimo 6 caracteres!")
-        .matches(
-            /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/,
-            "Sua senha precisa ter ao menos uma letra, um numero e um caracter especial!"
-        ),
+        password: yup.string().required("Campo Obrigatório").min(8, "Minimo 8 caracteres!")
+        .matches(/^(?=.*[0-9])(?=.{8,})/,"Senha pode conter apenas numeros"),
         confirmPassword: yup
             .string()
             .required("Senhas não são iguais")
@@ -35,9 +35,12 @@ const Signup = () => {
         resolver: yupResolver(schema),
     })
 
-    const onSubmit = (data) => {
-        console.log(data)
-        history.push("/login")
+    const onSubmit = ({name, email, password }) => {
+
+        const user = {name, email, password}
+        api.post("/user/register", user)
+        .then((response) => console.log(response.data))
+        .catch((err) => console.log(err))
     }
 
     return(
