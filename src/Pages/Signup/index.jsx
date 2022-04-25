@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom"
+import { Link, useHistory, Redirect} from "react-router-dom"
 
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
@@ -16,7 +16,7 @@ import Input from "../../Components/Input"
 
 
 
-const Signup = () => {
+const Signup = ({ authenticated}) => {
 
     const history = useHistory()
 
@@ -45,6 +45,10 @@ const Signup = () => {
             return history.push("/login")
         })
         .catch(() => toast.error('Verifique se os campos foram inseridos corretamente ou tente outro email'))
+    }
+
+    if(authenticated){
+        return <Redirect to="/dashboard" />
     }
 
     return(
