@@ -41,6 +41,8 @@ const Login = ({ authenticated, setAuthenticated }) => {
 
             localStorage.setItem("@Doit:token", JSON.stringify(token));
 
+            toast.success("Login realizado com sucesso!")
+
             setAuthenticated(true)
 
             return history.push("/dashboard");
@@ -81,7 +83,7 @@ const Login = ({ authenticated, setAuthenticated }) => {
 
                         <Button type="submit">Enviar</Button>
                         <p>
-                            Ainda não tem uma conta? Faça seu{" "}
+                            Ainda não tem uma conta? Faça seu
                             <Link to="/signup">cadastro</Link>
                         </p>
                     </form>
